@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch request</title>
+</head>
+  <script>
+    function sendRequest() {
+      fetch("http://localhost:5000/api/name")
+              .then(resp => resp.text())
+              .then(r => document.getElementById('request').innerText = r)
+              .catch(err => console.log(err));
+    }
+  </script>
+<body>
+  <h1>Fetch method</h1>
+  <input type="button" value="Send request" onclick="sendRequest()"/>
+  <div id="request"></div>
+</body>
+</html>

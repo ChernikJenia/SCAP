@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery method</title>
+</head>
+<script>
+
+function sendRequest() {
+        $.ajax({
+            url : "http://localhost:5000/api/name",
+            type : "GET"
+        }).done((msg) => {
+          $("#request").html = msg;
+        })
+        .fail(err, status => {
+            console.log(status);
+        });
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<body>
+  <h1>Jquery method</h1>
+    <input type="button" value="Send request" onclick="sendRequest()"/>
+</body>
+</html>

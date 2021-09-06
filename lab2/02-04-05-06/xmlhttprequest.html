@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+    <style>
+        #response {
+            font-style: italic;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<script>
+    function sendRequest() {
+        let req = new XMLHttpRequest();
+        req.open("GET", "/api/name");
+
+        req.onreadystatechange = (data, err) => {
+            document.getElementById("response").innerHTML = req.responseText;
+        };
+
+        req.send();
+    }
+</script>
+<body>
+    <h1>Запрос от /api/name</h1>
+    <input type="button" value="Send request" onclick="sendRequest()"/>
+    <div id="response"></div>
+</body>
+</html>
