@@ -15,7 +15,7 @@
         let req = new XMLHttpRequest();
         req.open("GET", "/api/name");
 
-        req.onreadystatechange = (data, err) => {
+        req.onreadystatechange = () => {
             document.getElementById("response").innerHTML = req.responseText;
         };
 
