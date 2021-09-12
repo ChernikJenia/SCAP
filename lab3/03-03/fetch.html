@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Factorial</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let div = document.querySelector('#result');
+            const d = Date.now();
+
+            for(let i = 1; i <= 20; i++) {
+                fetch(`http://localhost:5000/fact?k=${i}`, {
+                    method : 'GET',
+                    headers: {'Content-Type': 'application/json', 'Accept' : 'application/json'}
+
+                })
+                    .then(res => res.json())
+                    .then(res => {
+                        let p = document.createElement('p');
+
+                        p.textContent = `${i}. Результат: ${Date.now() - d}-${res.k}/${res.fact}`;
+                        div.appendChild(p);
+
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1> Factorial </h1>
+    <div id="result"></div>
+</body>
+</html>
