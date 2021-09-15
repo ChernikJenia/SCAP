@@ -5,11 +5,11 @@ const fileName = "./02-01/index.html";
 
 http.createServer((req, resp) => {
 
-    if(req.url.toLowerCase() !== "/html") {
+    if(req.url.toLowerCase() === "/html") {
         fs.stat(fileName, (err, stats) => {
             if(err) console.log(err);
             else{
-                const html = fs.readFileSync(fileName);
+                const html = fs.readFileSync(fileName, "utf-8");
 
                 resp.writeHead(200, {'Content-Type': "text/html; charset=utf-8"});
                 resp.end(html);
