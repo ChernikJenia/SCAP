@@ -6,6 +6,7 @@ const NORM = 'norm', STOP = 'stop', TEST = 'test', IDLE = 'idle', EXIT = 'exit';
 http.createServer((req, resp) => {
     let currentState = NORM;
 
+
     stdout.write(`${currentState}->`);
 
     stdin.setEncoding('utf-8');
