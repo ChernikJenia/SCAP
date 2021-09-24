@@ -9,13 +9,13 @@ const PORT = 5000;
 
 db.on('GET', (req, resp) => {
     resp.writeHead(200, { 'Content-Type' : 'application/json; charset=utf-8'});
-    resp.end(db.get());
+    resp.end(db.select());
 });
 
 db.on('POST',  (req, resp) => {
     req.on('data', data => {
         let newObj = String(data);
-        db.post(JSON.parse(newObj));
+        db.insert(JSON.parse(newObj));
 
         resp.writeHead(200, { 'Content-Type' : 'application/json; charset=utf-8'});
         resp.end(newObj);
@@ -27,7 +27,7 @@ db.on('PUT', (req, resp) => {
         let objToUpdate = String(data);
 
         console.log(objToUpdate);
-        db.put(JSON.parse(objToUpdate));
+        db.update(JSON.parse(objToUpdate));
         resp.end();
     });
 });
