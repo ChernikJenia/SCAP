@@ -21,6 +21,8 @@ let startTime;
 let finishTime;
 let isStatisticsCollecting;
 
+process.stdin.unref();
+
 db.on('GET', (req, resp) => {
     resp.writeHead(200, { 'Content-Type' : 'application/json; charset=utf-8'});
     resp.end(db.select());
@@ -78,8 +80,7 @@ rl.on('line', command => {
             }
             if (commandAndArgs[1] !== undefined) {
                 sdCommand = setTimeout(() => {
-                    //server.close();
-                    process.exit(0);
+                    server.close();
                 }, timeout);
 
                 sdCommand.unref();
