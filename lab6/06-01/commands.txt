@@ -1,0 +1,10 @@
+#1 =======
+npm view sendmail
+
+#2 =======
+npm i sendmail
+
+#3 =======
+npm list
+
+
