@@ -1,12 +1,11 @@
 const express = require('express')
-const sendmail = require('sendmail')({silent: true});
 const fs = require('fs');
 const http = require('http');
 const PORT = 5000;
 const fileName = './index.html';
 const app = express();
 const urlencodedParser = express.urlencoded({extended: false});
-
+const { send } = require('./m0603');
 
 app.get("/", (req, resp) => {
     fs.access(fileName,  fs.constants.R_OK, (err) => {
@@ -20,16 +19,7 @@ app.get("/", (req, resp) => {
 });
 
 app.post("/send", urlencodedParser, (req, resp) => {
-    sendmail({
-       from: req.body.from,
-       to: req.body.to,
-       subject: req.body.message
-    }, (err, reply) => {
-        console.log(err && err.stack)
-        console.dir(reply)
-    });
-    console.log("ok");
-    //resp.end("ok");
+     resp.end(send(req.body.message));
 });
 
 app.listen(PORT, () => {
