@@ -9,18 +9,13 @@ var transporter = nodemailer.createTransport({
       pass: process.env.MAIL_PASS
     }
   });
-  
-  var mailOptions = {
-    from: process.env.MAIL_LOGIN,
-    to: process.env.MAIL_LOGIN,
-    subject: 'Sending Email using Node.js',
-  };
 
 module.exports.send = (message) => {
-    mailOptions.text = message;
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        console.log(error ?? info.response);
+    return transporter.sendMail({
+        from: process.env.MAIL_LOGIN,
+        to: process.env.MAIL_LOGIN,
+        subject: 'Send message using Nodemailer',
+        text: message
     });
- 
 };

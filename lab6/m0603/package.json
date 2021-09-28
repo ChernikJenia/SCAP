@@ -1,0 +1,15 @@
+{
+  "name": "@chernikjenia/m0603",
+  "version": "1.0.2",
+  "description": "",
+  "main": "m0603.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "nodemailer": "^6.6.5",
+    "dotenv": "^10.0.0"
+  },
+  "author": "chernikjenia",
+  "license": "ISC"
+}

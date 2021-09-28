@@ -5,7 +5,7 @@ const PORT = 5000;
 const fileName = './index.html';
 const app = express();
 const urlencodedParser = express.urlencoded({extended: false});
-const { send } = require('./m0603');
+const { send } = require('./m0603/m0603');
 
 app.get("/", (req, resp) => {
     fs.access(fileName,  fs.constants.R_OK, (err) => {
@@ -19,7 +19,8 @@ app.get("/", (req, resp) => {
 });
 
 app.post("/send", urlencodedParser, (req, resp) => {
-     resp.end(send(req.body.message));
+    send(req.body.message)
+        .then(result => resp.end(result.response));
 });
 
 app.listen(PORT, () => {
