@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload file</title>
+</head>
+<style>
+    body {
+        background: #333;
+        color: white;
+    }
+    form {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+    }
+    form>* {
+        margin: 10px;
+    }
+</style>
+<body>
+    <h1>Upload file to server</h1>
+
+    <form action="upload" enctype="multipart/form-data" method="POST">
+        <input type="file" name="file" value="Select file">
+        <input type="submit" value="Отправить файл">
+    </form>
+</body>
+</html>
