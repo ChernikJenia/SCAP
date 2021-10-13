@@ -1,6 +1,6 @@
 const {URL} = require("url");
 const fs = require("fs");
-const STATIC_DIR = "./static";
+const STATIC_DIR = "./static/files";
 const SF = require("../lab7/m07-01");
 const sf = new SF.SF(STATIC_DIR);
 const fileName = "./formparameter.html";

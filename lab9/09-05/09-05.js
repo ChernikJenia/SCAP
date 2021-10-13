@@ -1,6 +1,5 @@
 const http = require('http');
-const xmlbuilder = require('xmlbuilder');
-const { parseString } = require('xml2js');
+
 
 const options = {
     host: 'localhost',
@@ -15,13 +14,12 @@ const callback = resp => {
 
     resp.on('data', chunk => {
         data += chunk;
-    })
+    });
 
     resp.on('end', () => {
-      // TODO: парсинг xml
+        console.log(data);
+    });
 
-
-    })
 };
 
 const xmlMessage =
@@ -36,5 +34,5 @@ const xmlMessage =
 const req = http.request(options, callback);
 
 req.on('error', () => console.log('failed to request'));
-req.write();
+req.write(xmlMessage);
 req.end();
