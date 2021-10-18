@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Start</title>
+</head>
+<script>
+    function startSendingMessages() {
+      const socket = new WebSocket('ws://localhost:4000');
+      let i = 0;
+
+      socket.addEventListener('open', (event) => {
+          const interval = setInterval(() => {
+              if(socket.readyState === socket.OPEN) {
+                  socket.send(`10-01-client: ${++i}`);
+              }
+              else {
+                  clearInterval(interval);
+              }
+          }, 3000);
+
+          setTimeout(() => {
+              clearInterval(interval);
+              socket.close();
+          }, 25000);
+      });
+
+      socket.addEventListener('message', (event) => {
+          console.log(event.data);
+      });
+
+      socket.addEventListener('close', (event) => {
+          if(event.wasClean) {
+              console.log(`Соединение закрыто чисто, код - ${event.code}, причина - ${event.reason}`);
+          }
+          else {
+              console.log('Соединение прервано')
+          }
+      });
+
+      socket.addEventListener('error', (err) => {
+          console.log(err);
+      })
+    }
+</script>
+<body>
+    <h1>10-01</h1>
+    <input type="button" value="startWS" onclick="startSendingMessages()">
+</body>
+</html>
