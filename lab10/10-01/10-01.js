@@ -26,7 +26,7 @@ wsServer.on('connection', (ws, req) => {
         clientMsgCount = message.toString().split(' ')[1];
 
         console.log(`Message from client: ${message}`);
-    });
+        });
 
     setInterval(() => {
         ws.send(`10-01-server: ${clientMsgCount}->${++serverMsgCount}`);

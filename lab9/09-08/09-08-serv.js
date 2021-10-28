@@ -19,10 +19,11 @@ http.createServer((req, resp) => {
             case '/text':
                 header = { "Content-Type" : "text/plain" };
                 fileName = '1.txt';
+                break;
             default:
                 header = { "Content-Type" : "text/plain" };
                 fileName = 'error.txt';
-                break
+                break;
         }
         resp.writeHead(200, header);
 

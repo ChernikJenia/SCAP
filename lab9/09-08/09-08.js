@@ -5,7 +5,7 @@ const options = {
     host: 'localhost',
     port: 5000,
     method: 'GET',
-    path: '/sss',
+    path: '/image',
     headers: {'Please': 'Give me some file'}
 }
 
