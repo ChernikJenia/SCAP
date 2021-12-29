@@ -1,0 +1,17 @@
+{
+  "name": "lab14",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chernikjenia",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "mssql": "^7.3.0",
+    "nodemon": "^2.0.15"
+  }
+}
