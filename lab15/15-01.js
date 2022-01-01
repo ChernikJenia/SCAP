@@ -17,7 +17,7 @@ mongoose.connect(connectionString)
 
 app.use(bodyParser.json());
 
-app.use(facultyRoutes);
-app.use(pulpitRoutes);
+app.use('/api/faculties', facultyRoutes);
+app.use('/api/pulpits', pulpitRoutes);
 
 app.listen(PORT, () => console.log(`Server is listening to ${PORT}`));
